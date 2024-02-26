@@ -285,7 +285,9 @@ export class FeaturePages extends App {
     const updateWishlist = (isChecked) => {
       if (!this.wishlist[this.email]) this.wishlist[this.email] = [];
 
-      const wishlistProduct = this.products?.slice()?.find((p) => p.id == id);
+      const wishlistProduct = this.products
+        ?.slice()
+        ?.find((p) => +p.id === +id);
 
       isChecked
         ? this.wishlist[this.email].push(wishlistProduct)
@@ -304,7 +306,7 @@ export class FeaturePages extends App {
       cardButtons.classList.remove("display-none");
 
       const cartProduct = {
-        product: this.products.slice().find((p) => p.id == id),
+        product: this.products.slice().find((p) => +p.id === +id),
         count: 1,
       };
       this.cart[this.email].push(cartProduct);
@@ -313,7 +315,9 @@ export class FeaturePages extends App {
     };
 
     const changeQuantityClicked = () => {
-      const cartProduct = this.cart[this.email].find((c) => c.product.id == id);
+      const cartProduct = this.cart[this.email].find(
+        (c) => +c.product.id === +id
+      );
       if (clickedElement.classList.contains("remove-quantity")) {
         cartProduct.count--;
         if (!cartProduct.count) {
