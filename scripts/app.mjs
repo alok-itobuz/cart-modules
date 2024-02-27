@@ -292,7 +292,7 @@ export class FeaturePages extends App {
       isChecked
         ? this.wishlist[this.email].push(wishlistProduct)
         : (this.wishlist[this.email] = this.wishlist[this.email].filter(
-            (prod) => prod.id != id
+            (prod) => prod.id !== id
           ));
       if (!isChecked && this.currentPage !== this.page.HOME)
         clickedCard.remove();
